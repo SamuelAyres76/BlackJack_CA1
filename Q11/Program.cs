@@ -3,7 +3,7 @@
  *  Student Number:     S00237258
  *  
  *  Beginning Date:     19/10/2023
- *  Completion Date:    04/11/2023
+ *  Completion Date:    06/11/2023
  *  
  *  BlackJack CA
  *  
@@ -13,30 +13,11 @@
  *                      - 5 Achievements to unlock!
  *                      
 */
+using BlackJack;
 
 namespace BlackJack
 {
     // The User Class Stores their name and achievements.
-        class User
-        {
-            public string Username { get; set; }
-
-            // Achievements
-                public bool WinGame { get; set; }
-                public bool LoseGame { get; set; }
-                public bool Lose3InRow { get; set; }
-                public bool Win3InRow { get; set; }
-                public bool ScoreBlackJack { get; set; }
-                public int WinStreak { get; set; }
-                public int LossStreak { get; set; }
-
-            // Achievement Unlocked Flags
-                public bool WinGameUnlocked { get; set; }
-                public bool LoseGameUnlocked { get; set; }
-                public bool Lose3InRowUnlocked { get; set; }
-                public bool Win3InRowUnlocked { get; set; }
-                public bool BlackJackUnlocked { get; set; }
-        }
 
     internal class Program
     {
@@ -45,14 +26,14 @@ namespace BlackJack
             /*
              * #################################################################################################################
              *       - Introduction
-             * ################################################################################################################
+             * #################################################################################################################
              */
 
                 // Introduction
                     Console.Write("- Please enter your username: ");
                     string usernameInput = Console.ReadLine();
 
-                // Initialise the users data.
+                // Initialise this users data.
                     User user = new User();
                     user.Username = usernameInput;
                     user.WinGame = false;
@@ -68,7 +49,7 @@ namespace BlackJack
             /*
              * #################################################################################################################
              *       - Main Menu
-             * ################################################################################################################
+             * #################################################################################################################
              */
 
                 while (true)
@@ -111,8 +92,8 @@ namespace BlackJack
         {
             /*
              * #################################################################################################################
-             *       - Creating and Shuffling the cards
-             * ################################################################################################################
+             *       - Creating and Shuffling the cards1
+             * #################################################################################################################
              */
 
                 // Creating the Deck to hold the cards.
@@ -146,7 +127,7 @@ namespace BlackJack
             /*
              * #################################################################################################################
              *       - Dealing the First Cards
-             * ################################################################################################################
+             * #################################################################################################################
              */
 
                 // Players First + Second Card
@@ -170,7 +151,7 @@ namespace BlackJack
             /*
              * #################################################################################################################
              *       - User's Gameplay
-             * ################################################################################################################
+             * #################################################################################################################
              */
 
                 // Section repeats until the player sticks, goes bust, or gets a Blackjack.
@@ -207,7 +188,7 @@ namespace BlackJack
             /*
              * #################################################################################################################
              *       - Dealer's Gameplay
-             * ################################################################################################################
+             * #################################################################################################################
              */
 
                 // Dealers Second Card
@@ -232,7 +213,7 @@ namespace BlackJack
             /*
              * #################################################################################################################
              *       - Who Won?
-             * ################################################################################################################
+             * #################################################################################################################
              */
                 
                 Console.WriteLine("\n<--- THE GAME IS OVER! --->");
@@ -249,6 +230,7 @@ namespace BlackJack
                                 {
                                     Console.WriteLine("\n- Achievement Unlocked: Lose 3 times in a row!");
                                     user.Lose3InRow = true;
+                                    user.Lose3InRowUnlocked = true;
                                 }
                                 if (!user.LoseGameUnlocked) // Check if the achievement has not been unlocked yet
                                 {
@@ -270,6 +252,7 @@ namespace BlackJack
                                 {
                                     Console.WriteLine("\n- Achievement Unlocked: Lose 3 times in a row!");
                                     user.Lose3InRow = true;
+                                    user.Lose3InRowUnlocked = true;
                                 }
                                 if (!user.LoseGameUnlocked)
                                 {
@@ -291,6 +274,8 @@ namespace BlackJack
                                 {
                                     Console.WriteLine("\n- Achievement Unlocked: Win 3 times in a row!");
                                     user.Win3InRow = true;
+                                    user.Win3InRowUnlocked = true;
+
                                 }
                                 if (!user.WinGameUnlocked)
                                 {
@@ -327,6 +312,8 @@ namespace BlackJack
                                 {
                                     Console.WriteLine("\n- Achievement Unlocked: Win 3 times in a row!");
                                     user.Win3InRow = true;
+                                    user.Lose3InRowUnlocked = true;
+
                                 }
                                 if (!user.WinGameUnlocked)
                                 {
@@ -349,7 +336,7 @@ namespace BlackJack
         /*
          * #################################################################################################################
          *       - The Achievements
-         * ################################################################################################################
+         * #################################################################################################################
          */
 
             static void ViewAchievements(User user)
@@ -369,4 +356,4 @@ namespace BlackJack
             }
     }
 }
-// END OF PROGRAM!
+// END OF PROGRAM!!
